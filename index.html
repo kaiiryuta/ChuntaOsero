@@ -1,0 +1,131 @@
+<html>
+    <head>
+        <title>ChuntaOsero</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <style type="text/css">
+<!--
+table {
+    margin: 20px;
+    background-color: darkgreen;
+}
+
+td {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid;
+}
+
+#message {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid;
+}
+-->
+        </style>
+        
+    </head>
+    <body onload="init();">
+        <script src="osero.js"></script>
+        <script src="koma.js"></script>
+        <script src="masu.js"></script>
+        <script src="human.js"></script>
+        <script src="ai.js"></script>
+        
+        <h1>ChuntaOsero</h1>
+        
+        <input type="button" value="初めからやり直す" onclick="onClickInit();" /><br />
+        <input id="isSelectedAi" type="checkbox" /><label for="isSelectedAi">AIモードを有効にする</label><br />
+        
+        <table id="table">
+            <tr>
+                <td><span id="0-0" onclick="onClickMasu(0, 0, FALSE);">-</span></td>
+                <td><span id="1-0" onclick="onClickMasu(1, 0, FALSE);">-</span></td>
+                <td><span id="2-0" onclick="onClickMasu(2, 0, FALSE);">-</span></td>
+                <td><span id="3-0" onclick="onClickMasu(3, 0, FALSE);">-</span></td>
+                <td><span id="4-0" onclick="onClickMasu(4, 0, FALSE);">-</span></td>
+                <td><span id="5-0" onclick="onClickMasu(5, 0, FALSE);">-</span></td>
+                <td><span id="6-0" onclick="onClickMasu(6, 0, FALSE);">-</span></td>
+                <td><span id="7-0" onclick="onClickMasu(7, 0, FALSE);">-</span></td>
+            </tr>
+            <tr>
+                <td><span id="0-1" onclick="onClickMasu(0, 1, FALSE);">-</span></td>
+                <td><span id="1-1" onclick="onClickMasu(1, 1, FALSE);">-</span></td>
+                <td><span id="2-1" onclick="onClickMasu(2, 1, FALSE);">-</span></td>
+                <td><span id="3-1" onclick="onClickMasu(3, 1, FALSE);">-</span></td>
+                <td><span id="4-1" onclick="onClickMasu(4, 1, FALSE);">-</span></td>
+                <td><span id="5-1" onclick="onClickMasu(5, 1, FALSE);">-</span></td>
+                <td><span id="6-1" onclick="onClickMasu(6, 1, FALSE);">-</span></td>
+                <td><span id="7-1" onclick="onClickMasu(7, 1, FALSE);">-</span></td>
+            </tr>
+            <tr>
+                <td><span id="0-2" onclick="onClickMasu(0, 2, FALSE);">-</span></td>
+                <td><span id="1-2" onclick="onClickMasu(1, 2, FALSE);">-</span></td>
+                <td><span id="2-2" onclick="onClickMasu(2, 2, FALSE);">-</span></td>
+                <td><span id="3-2" onclick="onClickMasu(3, 2, FALSE);">-</span></td>
+                <td><span id="4-2" onclick="onClickMasu(4, 2, FALSE);">-</span></td>
+                <td><span id="5-2" onclick="onClickMasu(5, 2, FALSE);">-</span></td>
+                <td><span id="6-2" onclick="onClickMasu(6, 2, FALSE);">-</span></td>
+                <td><span id="7-2" onclick="onClickMasu(7, 2, FALSE);">-</span></td>
+            </tr>
+            <tr>
+                <td><span id="0-3" onclick="onClickMasu(0, 3, FALSE);">-</span></td>
+                <td><span id="1-3" onclick="onClickMasu(1, 3, FALSE);">-</span></td>
+                <td><span id="2-3" onclick="onClickMasu(2, 3, FALSE);">-</span></td>
+                <td><span id="3-3" onclick="onClickMasu(3, 3, FALSE);">-</span></td>
+                <td><span id="4-3" onclick="onClickMasu(4, 3, FALSE);">-</span></td>
+                <td><span id="5-3" onclick="onClickMasu(5, 3, FALSE);">-</span></td>
+                <td><span id="6-3" onclick="onClickMasu(6, 3, FALSE);">-</span></td>
+                <td><span id="7-3" onclick="onClickMasu(7, 3, FALSE);">-</span></td>
+            </tr>
+            <tr>
+                <td><span id="0-4" onclick="onClickMasu(0, 4, FALSE);">-</span></td>
+                <td><span id="1-4" onclick="onClickMasu(1, 4, FALSE);">-</span></td>
+                <td><span id="2-4" onclick="onClickMasu(2, 4, FALSE);">-</span></td>
+                <td><span id="3-4" onclick="onClickMasu(3, 4, FALSE);">-</span></td>
+                <td><span id="4-4" onclick="onClickMasu(4, 4, FALSE);">-</span></td>
+                <td><span id="5-4" onclick="onClickMasu(5, 4, FALSE);">-</span></td>
+                <td><span id="6-4" onclick="onClickMasu(6, 4, FALSE);">-</span></td>
+                <td><span id="7-4" onclick="onClickMasu(7, 4, FALSE);">-</span></td>
+            </tr>
+            <tr>
+                <td><span id="0-5" onclick="onClickMasu(0, 5, FALSE);">-</span></td>
+                <td><span id="1-5" onclick="onClickMasu(1, 5, FALSE);">-</span></td>
+                <td><span id="2-5" onclick="onClickMasu(2, 5, FALSE);">-</span></td>
+                <td><span id="3-5" onclick="onClickMasu(3, 5, FALSE);">-</span></td>
+                <td><span id="4-5" onclick="onClickMasu(4, 5, FALSE);">-</span></td>
+                <td><span id="5-5" onclick="onClickMasu(5, 5, FALSE);">-</span></td>
+                <td><span id="6-5" onclick="onClickMasu(6, 5, FALSE);">-</span></td>
+                <td><span id="7-5" onclick="onClickMasu(7, 5, FALSE);">-</span></td>
+            </tr>
+            <tr>
+                <td><span id="0-6" onclick="onClickMasu(0, 6, FALSE);">-</span></td>
+                <td><span id="1-6" onclick="onClickMasu(1, 6, FALSE);">-</span></td>
+                <td><span id="2-6" onclick="onClickMasu(2, 6, FALSE);">-</span></td>
+                <td><span id="3-6" onclick="onClickMasu(3, 6, FALSE);">-</span></td>
+                <td><span id="4-6" onclick="onClickMasu(4, 6, FALSE);">-</span></td>
+                <td><span id="5-6" onclick="onClickMasu(5, 6, FALSE);">-</span></td>
+                <td><span id="6-6" onclick="onClickMasu(6, 6, FALSE);">-</span></td>
+                <td><span id="7-6" onclick="onClickMasu(7, 6, FALSE);">-</span></td>
+            </tr>
+            <tr>
+                <td><span id="0-7" onclick="onClickMasu(0, 7, FALSE);">-</span></td>
+                <td><span id="1-7" onclick="onClickMasu(1, 7, FALSE);">-</span></td>
+                <td><span id="2-7" onclick="onClickMasu(2, 7, FALSE);">-</span></td>
+                <td><span id="3-7" onclick="onClickMasu(3, 7, FALSE);">-</span></td>
+                <td><span id="4-7" onclick="onClickMasu(4, 7, FALSE);">-</span></td>
+                <td><span id="5-7" onclick="onClickMasu(5, 7, FALSE);">-</span></td>
+                <td><span id="6-7" onclick="onClickMasu(6, 7, FALSE);">-</span></td>
+                <td><span id="7-7" onclick="onClickMasu(7, 7, FALSE);">-</span></td>
+            </tr>
+        </table>
+        
+        <input type="button" value="パスする" onclick="onClickNextTurn(FALSE);" />
+        
+        <div id="message">
+            message show here.
+        </div>
+    </body>
+</html>
